@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coway Water Purifiers - Rofiq Agent</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Your original CSS (same as before) */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f9fafb;
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar {
+      background-color: #0057b8;
+      color: white;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffd600;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 50px 40px;
+      background: linear-gradient(90deg, #0057b8 0%, #0095ff 100%);
+      color: white;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      flex: 1 1 400px;
+      max-width: 600px;
+      margin-bottom: 20px;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .hero-text p {
+      font-size: 1.25rem;
+    }
+
+    .hero-img {
+      flex: 1 1 400px;
+      max-width: 500px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    main {
+      flex-grow: 1;
+      padding: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 35px;
+      color: #0057b8;
+      font-weight: 700;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 5px 15px rgb(0 0 0 / 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgb(0 0 0 / 0.15);
+    }
+
+    .product-card img {
+      width: 100%;
+      max-width: 250px;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      cursor: pointer;
+    }
+
+    .product-card h3 {
+      color: #0057b8;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .product-card p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    footer {
+      background-color: #003f87;
+      color: white;
+      padding: 25px 40px;
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    footer a {
+      color: #ffd600;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        padding: 30px 20px;
+      }
+
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero-img {
+        max-width: 100%;
+      }
+    }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      padding: 40px 20px;
+      box-sizing: border-box;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 15px;
+      max-width: 700px;
+      margin: 50px auto;
+      padding: 30px 40px;
+      box-shadow: 0 12px 25px rgb(0 0 0 / 0.2);
+      text-align: center;
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 25px;
+      color: #555;
+      font-size: 28px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .close-btn:hover {
+      color: #0057b8;
+    }
+
+    .order-now-btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 25px;
+      background-color: #25D366;
+      color: white;
+      font-weight: 700;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .order-now-btn:hover {
+      background-color: #1ebe57;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Rofiq Coway</div>
+      <ul class="nav-links">
+        <li><a href="#products">Products</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Discover Premium Coway Water Purifiers</h1>
+        <p>Your trusted Coway agent for healthy & clean water solutions.</p>
+      </div>
+      <img src="images/hero-banner.jpg" alt="Coway Water Purifier" class="hero-img" />
+    </section>
+  </header>
+
+  <main id="products">
+    <h2 class="section-title">Our Featured Water Purifiers</h2>
+    <div class="products-grid">
+
+      <article class="product-card">
+        <img src="images/ais.jpg" alt="Coway AIS" class="product-image" />
+        <h3>Coway AIS</h3>
+        <p>Premium water purifier with AI self-cleaning, instant temperature control, and UV sterilization.</p>
+      </article>
+
+      <article class="product-card">
+        <img src="images/cinnamon.jpg" alt="Coway Cinnamon" class="product-image" />
+        <h3>Coway Cinnamon</h3>
+        <p>Compact countertop purifier with NanoTrap™ filter and easy one-touch control.</p>
+      </article>
+
+      <article class="product-card">
+        <img src="images/coreplus.jpg" alt="Coway Core Plus" class="product-image" />
+        <h3>Coway Core Plus</h3>
+        <p>Large tank purifier with fast cooling system and high-volume output for offices or families.</p>
+      </article>
+
+      <article class="product-card">
+        <img src="images/dazzie.jpg" alt="Coway Dazzie" class="product-image" />
+        <h3>Coway Dazzie</h3>
+        <p>Touch-controlled purifier with 4 temperature presets and UV light sterilization.</p>
+      </article>
+
+      <article class="product-card">
+        <img src="images/glaze.jpg" alt="Coway Glaze" class="product-image" />
+        <h3>Coway Glaze</h3>
+        <p>Modern and stylish design with multi-temp water and child lock safety features.</p>
+      </article>
+
+      <article class="product-card">
+        <img src="images/harry.jpg" alt="Coway Harry" class="product-image" />
+        <h3>Coway Harry</h3>
+        <p>Reliable water purifier with basic temperature functions and energy-saving mode.</p>
+      </article>
+
+      <article class="product-card">
+        <img src="images/inception.jpg" alt="Coway Inception" class="product-image" />
+        <h3>Coway Inception</h3>
+        <p>Ionizer + purifier with 6 water types including alkaline and acidic. Great for health-conscious users.</p>
+      </article>
+
+      <article class="product-card">
+        <img src="images/lucyplus.jpg" alt="Coway Lucy Plus" class="product-image" />
+        <h3>Coway Lucy Plus</h3>
+        <p>Ice-making + water purifying combo. Perfect for hot climates and big households.</p>
+      </article>
+
+      <article class="product-card">
+        <img src="images/neon.jpg" alt="Coway Neon" class="product-image" />
+        <h3>Coway Neon</h3>
+        <p>Compact purifier with child lock, multi-stage filtration, and energy-saving features.</p>
+      </article>
+
+      <article class="product-card">
+        <img src="images/villaem2.jpg" alt="Coway Villaem2" class="product-image" />
+        <h3>Coway Villaem2</h3>
+        <p>Elegant purifier with multiple filtration stages and easy maintenance.</p>
+      </article>
+
+      <article class="product-card">
+        <img src="images/villaem3.jpg" alt="Coway Villaem3" class="product-image" />
+        <h3>Coway Villaem3</h3>
+        <p>Advanced model with improved flow rate and compact design.</p>
+      </article>
+
+      <article class="product-card">
+        <img src="images/ombak.jpg" alt="Coway Ombak" class="product-image" />
+        <h3>Coway Ombak</h3>
+        <p>Modern design water purifier with efficient filtration and smart features.</p>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Modal -->
+  <div id="productModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDesc">
+    <div class="modal-content">
+      <span class="close-btn" aria-label="Close modal">&times;</span>
+      <h3 id="modalTitle"></h3>
+      <video id="modalVideo" width="100%" controls>
+        <source src="" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <p id="modalDesc"></p>
+
+      <!-- WhatsApp Order Now button -->
+      <a href="https://wa.me/60123456789?text=I%20am%20interested%20in%20ordering%20a%20Coway%20water%20purifier." target="_blank" rel="noopener" class="order-now-btn">Order Now</a>
+    </div>
+  </div>
+
+  <footer id="contact">
+    <p>Contact Rofiq at <a href="mailto:rofiq.coway@example.com">rofiq.coway@example.com</a> or WhatsApp: <a href="https://wa.me/60123456789" target="_blank" rel="noopener">+60 12-345 6789</a></p>
+    <p>&copy; 2025 Rofiq Coway Agent. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Wait for the DOM to be fully loaded before executing the script
+    document.addEventListener('DOMContentLoaded', function() {
+      // Product data matching the displayed products
+      const products = [
+        {
+          name: 'Coway AIS',
+          img: 'images/ais.jpg',
+          description: 'The AIS is a multifunctional water purifier equipped with a UV sterilized ice tank, producing crystal-clear bullet ice, and features dual UV sterilization and circulatory drainage to maintain water and ice purity.',
+          video: 'videos/ais.mp4',
+        },
+        {
+          name: 'Coway Cinnamon',
+          img: 'images/cinnamon.jpg',
+          description: 'The Cinnamon model provides a Reverse Osmosis filtration system with a Plus Inno-Sense filter that further purifies water by removing fine dust, ensuring hygienic water for your consumption.',
+          video: 'videos/cinnamon.mp4',
+        },
+        {
+          name: 'Coway Core Plus',
+          img: 'images/coreplus.jpg',
+          description: 'The Core Plus is a floor-standing water purifier with a smart touch panel, offering three temperature settings and customizable water volume, making it ideal for large households or office environments. ',
+          video: 'videos/coreplus.mp4',
+        },
+        {
+          name: 'Coway Dazzie',
+          img: 'images/dazzie.jpg',
+          description: 'The Dazzie is a compact countertop water purifier featuring a tankless ambient water system, providing on-demand water dispensing with a minimalist design suitable for small kitchens.',
+          video: 'videos/dazzie.mp4',
+        },
+        {
+          name: 'Coway Glaze',
+          img: 'images/glaze.jpg',
+          description: 'Glaze offers a modern countertop design with advanced UV sterilization and a multi-stage filtration system that ensures safe, purified water with a focus on convenience and hygiene.',
+          video: 'videos/glaze.mp4',
+        },
+        {
+          name: 'Coway Harry',
+          img: 'images/harry.jpg',
+          description: 'Harry features a sleek design with a dual filtration system combining sediment and carbon filters to deliver clean and fresh water efficiently, making it perfect for everyday family use.',
+          video: 'videos/harry.mp4',
+        },
+        {
+          name: 'Coway Inception',
+          img: 'images/inception.jpg',
+          description: 'The Inception combines Reverse Osmosis and alkaline filtration systems, producing alkaline water with antioxidant benefits, and boasts a modern, space-saving design for contemporary kitchens.',
+          video: 'videos/inception.mp4',
+        },
+        {
+          name: 'Coway Lucy Plus',
+          img: 'images/lucyplus.jpg',
+          description: 'The Lucy Plus is a floor-standing water purifier equipped with an integrated ice maker, producing fast ice, and features a Neo-Sense Reverse Osmosis filtration system for purified water and ice.',
+          video: 'videos/lucyplus.mp4',
+        },
+        {
+          name: 'Coway Neon',
+          img: 'images/neon.jpg',
+          description: 'The NeoN is a compact, tankless ambient water purifier featuring Coway\'s Nanotrap™ filter that effectively reduces microorganisms, bacteria, and viruses, sleek design suitable for small spaces.',
+          video: 'videos/neon.mp4',
+        },
+        {
+          name: 'Coway Villaem2',
+          img: 'images/villaem2.jpg',
+          description: 'The Villaem II offers a Reverse Osmosis filtration system with a child safety lock, ensuring safe access to hot water, and features a temperature knob control for customizable water temperature settings.',
+          video: 'videos/villaem2.mp4',
+        },
+        {
+          name: 'Coway Villaem3',
+          img: 'images/villaem3.jpg',
+          description: 'The Villaem III incorporates a UV LED lamp that sanitizes the water tank twice daily, ensuring hygienic water, and features a removable deco faucet for easy cleaning.',
+          video: 'videos/villaem3.mp4',
+        },
+        {
+          name: 'Coway Ombak',
+          img: 'images/ombak.jpg',
+          description: 'The Ombak model features a Reverse Osmosis filtration system with an optional mineral filter, providing purified water with added minerals, and includes a high filtration capacity of 3.2 liters per hour.',
+          video: 'videos/ombak.mp4',
+        },
+      ];
+
+      // Modal Elements
+      const modal = document.getElementById('productModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDesc = document.getElementById('modalDesc');
+      const modalVideo = document.getElementById('modalVideo');
+      const closeBtn = document.querySelector('.close-btn');
+
+      // Open modal on image click
+      document.querySelectorAll('.product-image').forEach((img, index) => {
+        img.addEventListener('click', () => {
+          const product = products[index];
+          modalTitle.textContent = product.name;
+          modalDesc.textContent = product.description;
+          modalVideo.src = product.video;
+          modalVideo.load();
+          modal.style.display = 'block';
+          modal.setAttribute('aria-hidden', 'false');
+        });
+      });
+
+      // Close modal
+      closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
+        modalVideo.pause();
+        modalVideo.currentTime = 0;
+      });
+
+      // Close modal on outside click
+      window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+          modal.setAttribute('aria-hidden', 'true');
+          modalVideo.pause();
+          modalVideo.currentTime = 0;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
