@@ -235,6 +235,23 @@
     .order-now-btn:hover {
       background-color: #1ebe57;
     }
+    
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
   </style>
 </head>
 <body>
@@ -340,10 +357,12 @@
     <div class="modal-content">
       <span class="close-btn" aria-label="Close modal">&times;</span>
       <h3 id="modalTitle"></h3>
-      <video id="modalVideo" width="100%" controls>
-        <source src="" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      <div class="video-container">
+        <iframe id="modalVideo" width="100%" height="400" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
       <p id="modalDesc"></p>
 
       <!-- WhatsApp Order Now button -->
@@ -365,31 +384,31 @@
           name: 'Coway AIS',
           img: 'images/ais.jpg',
           description: 'The AIS is a multifunctional water purifier equipped with a UV sterilized ice tank, producing crystal-clear bullet ice, and features dual UV sterilization and circulatory drainage to maintain water and ice purity.',
-          video: 'videos/ais.mp4',
+          video: 'https://www.youtube.com/embed/ggHXHk05-Ss',
         },
         {
           name: 'Coway Cinnamon',
           img: 'images/cinnamon.jpg',
           description: 'The Cinnamon model provides a Reverse Osmosis filtration system with a Plus Inno-Sense filter that further purifies water by removing fine dust, ensuring hygienic water for your consumption.',
-          video: 'videos/cinnamon.mp4',
+          video: 'https://www.youtube.com/embed/GVSlzbek0DQ',
         },
         {
           name: 'Coway Core Plus',
           img: 'images/coreplus.jpg',
           description: 'The Core Plus is a floor-standing water purifier with a smart touch panel, offering three temperature settings and customizable water volume, making it ideal for large households or office environments. ',
-          video: 'videos/coreplus.mp4',
+          video: 'https://www.youtube.com/embed/GVSlzbek0DQ',
         },
         {
           name: 'Coway Dazzie',
           img: 'images/dazzie.jpg',
           description: 'The Dazzie is a compact countertop water purifier featuring a tankless ambient water system, providing on-demand water dispensing with a minimalist design suitable for small kitchens.',
-          video: 'videos/dazzie.mp4',
+          video: 'https://www.youtube.com/embed/dZU1LeBqtMs',
         },
         {
           name: 'Coway Glaze',
           img: 'images/glaze.jpg',
           description: 'Glaze offers a modern countertop design with advanced UV sterilization and a multi-stage filtration system that ensures safe, purified water with a focus on convenience and hygiene.',
-          video: 'videos/glaze.mp4',
+          video: 'https://www.youtube.com/embed/FYkhGfQWEec',
         },
         {
           name: 'Coway Harry',
@@ -401,37 +420,37 @@
           name: 'Coway Inception',
           img: 'images/inception.jpg',
           description: 'The Inception combines Reverse Osmosis and alkaline filtration systems, producing alkaline water with antioxidant benefits, and boasts a modern, space-saving design for contemporary kitchens.',
-          video: 'videos/inception.mp4',
+          video: 'https://www.youtube.com/embed/s1QWgGbvegk',
         },
         {
           name: 'Coway Lucy Plus',
           img: 'images/lucyplus.jpg',
           description: 'The Lucy Plus is a floor-standing water purifier equipped with an integrated ice maker, producing fast ice, and features a Neo-Sense Reverse Osmosis filtration system for purified water and ice.',
-          video: 'videos/lucyplus.mp4',
+          video: 'https://www.youtube.com/embed/7kYXQBJAuWE',
         },
         {
           name: 'Coway Neon',
           img: 'images/neon.jpg',
           description: 'The NeoN is a compact, tankless ambient water purifier featuring Coway\'s Nanotrap™ filter that effectively reduces microorganisms, bacteria, and viruses, sleek design suitable for small spaces.',
-          video: 'videos/neon.mp4',
+          video: 'https://www.youtube.com/embed/r_w-UdnF3FE',
         },
         {
           name: 'Coway Villaem2',
           img: 'images/villaem2.jpg',
           description: 'The Villaem II offers a Reverse Osmosis filtration system with a child safety lock, ensuring safe access to hot water, and features a temperature knob control for customizable water temperature settings.',
-          video: 'videos/villaem2.mp4',
+          video: 'https://www.youtube.com/embed/jWXXFbVbw48',
         },
         {
           name: 'Coway Villaem3',
           img: 'images/villaem3.jpg',
           description: 'The Villaem III incorporates a UV LED lamp that sanitizes the water tank twice daily, ensuring hygienic water, and features a removable deco faucet for easy cleaning.',
-          video: 'videos/villaem3.mp4',
+          video: 'https://www.youtube.com/embed/3J77mXxIdGY',
         },
         {
           name: 'Coway Ombak',
           img: 'images/ombak.jpg',
           description: 'The Ombak model features a Reverse Osmosis filtration system with an optional mineral filter, providing purified water with added minerals, and includes a high filtration capacity of 3.2 liters per hour.',
-          video: 'videos/ombak.mp4',
+          video: 'https://www.youtube.com/embed/07FKM8IUHvY',
         },
       ];
 
@@ -448,8 +467,17 @@
           const product = products[index];
           modalTitle.textContent = product.name;
           modalDesc.textContent = product.description;
-          modalVideo.src = product.video;
-          modalVideo.load();
+          
+          // Check if it's a YouTube URL and format it correctly
+          let videoUrl = product.video;
+          if (videoUrl.includes('youtube.com/watch')) {
+            videoUrl = videoUrl.replace('watch?v=', 'embed/');
+          }
+          // Remove any parameters after the video ID
+          videoUrl = videoUrl.split('?')[0];
+          videoUrl = videoUrl.split('&')[0];
+          
+          modalVideo.setAttribute('src', videoUrl);
           modal.style.display = 'block';
           modal.setAttribute('aria-hidden', 'false');
         });
@@ -459,8 +487,7 @@
       closeBtn.addEventListener('click', () => {
         modal.style.display = 'none';
         modal.setAttribute('aria-hidden', 'true');
-        modalVideo.pause();
-        modalVideo.currentTime = 0;
+        modalVideo.setAttribute('src', ''); // This stops the video
       });
 
       // Close modal on outside click
@@ -468,8 +495,7 @@
         if (e.target === modal) {
           modal.style.display = 'none';
           modal.setAttribute('aria-hidden', 'true');
-          modalVideo.pause();
-          modalVideo.currentTime = 0;
+          modalVideo.setAttribute('src', ''); // This stops the video
         }
       });
     });
