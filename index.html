@@ -252,14 +252,23 @@
       height: 100%;
       border: none;
     }
-    .hot-selling {
-      background-color: #ffd600;
-      color: #333;
+    
+    .hot-badge {
+      background-color: #ff4d4d;
+      color: white;
       font-size: 0.75rem;
       font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 12px;
-      margin-left: 8px;
+      padding: 4px 8px;
+      border-radius: 15px;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 1;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    
+  .product-card-wrapper {
+      position: relative;
     }
 
   </style>
@@ -335,11 +344,14 @@
         <p>Coway Lucy Plus: Instant purified ice and water with contactless dispensing.</p>
       </article>
 
-      <article class="product-card">
-        <img src="images/neon.jpg" alt="Coway Neon" class="product-image" />
-        <h3>Coway Neon <span class="hot-selling">🔥 Hot Selling</span></h3>
-        <p>Coway Neon: Self-service option with easy filter replacement.</p>
-      </article>
+      <div class="product-card-wrapper">
+        <div class="hot-badge">Hot Selling</div>
+        <article class="product-card">
+          <img src="images/neon.jpg" alt="Coway Neon" class="product-image" />
+          <h3>Coway Neon</h3>
+          <p>Coway Neon: Self-service option with easy filter replacement.</p>
+        </article>
+      </div>
 
       <article class="product-card">
         <img src="images/villaem2.jpg" alt="Coway Villaem2" class="product-image" />
@@ -347,11 +359,14 @@
         <p>Coway Villaem II: Four water temperatures with user-friendly knob control.</p>
       </article>
 
-      <article class="product-card">
-        <img src="images/villaem3.jpg" alt="Coway Villaem3" class="product-image" />
-        <h3>Coway Villaem3 <span class="hot-selling">🔥 Hot Selling</span></h3>
-        <p>Coway Villaem 3: One-touch control with 48 customizable temperature settings.</p>
-      </article>
+      <div class="product-card-wrapper">
+        <div class="hot-badge">Hot Selling</div>
+        <article class="product-card">
+          <img src="images/villaem3.jpg" alt="Coway Villaem3" class="product-image" />
+          <h3>Coway Villaem3</h3>
+          <p>Coway Villaem 3: One-touch control with 48 customizable temperature settings.</p>
+        </article>
+      </div>
 
       <article class="product-card">
         <img src="images/ombak.jpg" alt="Coway Ombak" class="product-image" />
